@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       #checkout the repository
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       #prepare runner for desired .net version SDK
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.x"
           dotnet-quality: "preview"
@@ -39,14 +39,14 @@ jobs:
           zip -r ../app.zip .
       # upload the published website code artifacts
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/app.zip
 
       # upload the bicep template as artifacts for next job
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
           name: bicep-template
           path: ${{ env.TEMPLATE-FILE }}
